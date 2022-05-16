@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : maria_db:3306
--- Généré le : lun. 16 mai 2022 à 12:50
+-- Généré le : lun. 16 mai 2022 à 13:09
 -- Version du serveur :  10.7.3-MariaDB-1:10.7.3+maria~focal
 -- Version de PHP : 7.4.11
 
@@ -33,6 +33,15 @@ CREATE TABLE `colums` (
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `colums`
+--
+
+INSERT INTO `colums` (`id`, `name`, `color`) VALUES
+(1, 'To Do', 'Red'),
+(2, 'In Progress', 'Orange'),
+(3, 'Done', 'Green');
 
 -- --------------------------------------------------------
 
