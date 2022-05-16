@@ -1,12 +1,12 @@
 <?php
 
-    require_once __DIR__ . "/../models/ColumnsModel.php";
+    require_once __DIR__ . "/../models/ColumnModel.php";
 
-    class ColumnsController extends BaseController {
+    class ColumnController extends BaseController {
 
         public function getList() {
             try {
-                $ColumnsModel = new ColumnsModel();
+                $ColumnModel = new ColumnModel();
         
                 $limit = 10;
                 $urlParams = $this->getQueryStringParams();
@@ -20,9 +20,9 @@
                     $offset = ($urlParams['page'] - 1) * $limit;
                 }
         
-                $Columns = $ColumnsModel->getAllColumns($offset, $limit);
+                $Columns = $ColumnModel->getAllColumn($offset, $limit);
         
-                $responseData = json_encode($Columns);
+                $responseData = json_encode($Column);
         
                 $this->sendOutput($responseData);
             } catch (Error $e) {
@@ -34,14 +34,14 @@
   
         public function get() {
             try {
-                $ColumnsModel = new ColumnsModel();
+                $ColumnModel = new ColumnModel();
         
                 $urlParams = $this->getQueryStringParams();
                 if (!isset($urlParams['id']) || !is_numeric($urlParams['id'])) {
                     throw new Exception("L'identifiant est incorrect ou n'a pas été spécifié");
                 }
         
-                $Columns = $ColumnsModel->getSingleColumns($urlParams['id']);
+                $Column = $ColumnModel->getSingleColumn($urlParams['id']);
         
                 $responseData = json_encode($Columns);
         
@@ -55,7 +55,7 @@
     
         public function store() {
             try {
-                $ColumnsModel = new ColumnsModel();
+                $ColumnModel = new ColumnModel();
         
                 $body = $this->getBody();
                 if (!$body) {
@@ -80,9 +80,9 @@
                     }
                 }
         
-                $Columns = $ColumnsModel->insertColumns($valuesToInsert);
+                $Column = $ColumnModel->insertColumn($valuesToInsert);
         
-                $responseData = json_encode($Columns);
+                $responseData = json_encode($Column);
         
                 $this->sendOutput($responseData);
             } catch (Error $e) {
@@ -94,7 +94,7 @@
     
         public function update() {
             try {
-                $ColumnsModel = new ColumnsModel();
+                $ColumnModel = new ColumnModel();
         
                 $body = $this->getBody();
                 if (!$body) {
@@ -113,9 +113,9 @@
                     }
                 }
         
-                $Columns = $ColumnsModel->updateColumns($valuesToUpdate, $body['id']);
+                $Column = $ColumnModel->updateColumn($valuesToUpdate, $body['id']);
         
-                $responseData = json_encode($Columns);
+                $responseData = json_encode($Column);
         
                 $this->sendOutput($responseData);
             } catch (Error $e) {
@@ -127,14 +127,14 @@
     
         public function destroy() {
             try {
-                $ColumnsModel = new ColumnsModel();
+                $ColumnModel = new ColumnModel();
         
                 $urlParams = $this->getQueryStringParams();
                 if (!isset($urlParams['id']) || !is_numeric($urlParams['id'])) {
                     throw new Exception("L'identifiant est incorrect ou n'a pas été spécifié");
                 }
         
-                $Columns = $ColumnsModel->deleteColumns($urlParams['id']);
+                $Column = $ColumnModel->deleteColumn($urlParams['id']);
         
                 $responseData = json_encode("La colonne a été correctement supprimé");
         
