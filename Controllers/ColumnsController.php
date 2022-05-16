@@ -20,7 +20,7 @@
                     $offset = ($urlParams['page'] - 1) * $limit;
                 }
         
-                $Columnss = $ColumnsModel->getAllColumns($offset, $limit);
+                $Columns = $ColumnsModel->getAllColumns($offset, $limit);
         
                 $responseData = json_encode($Columns);
         
