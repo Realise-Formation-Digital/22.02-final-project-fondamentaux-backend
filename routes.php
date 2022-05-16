@@ -15,3 +15,12 @@ $routes = [
   "/api/Columns/remove" => ['DELETE', 'ColumnsController', 'destroy'],
 
 ];
+
+$routes = [
+  "/api/Users/list" => ['GET', 'UsersController', 'getList'],
+  "/api/Users/get" => ['GET', 'UsersController', 'get'],
+  "/api/Users/add" => ['POST', 'UsersController', 'store'],
+  "/api/Users/update" => ['PUT', 'UsersController', 'update'],
+  "/api/Users/remove" => ['DELETE', 'UsersController', 'destroy'],
+
+];
