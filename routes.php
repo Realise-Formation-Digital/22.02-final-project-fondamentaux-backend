@@ -24,3 +24,12 @@ $routes = [
   "/api/Users/remove" => ['DELETE', 'UsersController', 'destroy'],
 
 ];
+
+$routes = [
+  "/api/tasks/list" => ['GET', 'tasksController', 'getList'],
+  "/api/tasks/get" => ['GET', 'tasksController', 'get'],
+  "/api/tasks/add" => ['POST', 'tasksController', 'store'],
+  "/api/tasks/update" => ['PUT', 'tasksController', 'update'],
+  "/api/tasks/remove" => ['DELETE', 'tasksController', 'destroy'],
+
+];

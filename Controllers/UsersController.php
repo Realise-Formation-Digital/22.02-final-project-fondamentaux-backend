@@ -61,11 +61,9 @@
                 if (!$body) {
                     throw new Exception("L'identifiant est incorrect ou n'a pas été spécifié");
                 }
-
                 if (!isset($body['id'])) {
                     throw new Exception("Aucun ID n'a été spécifié");
                 }
-
                 if (!isset($body['username'])) {
                     throw new Exception("Aucun pseudo n'a été spécifié");
                 }

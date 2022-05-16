@@ -7,6 +7,7 @@
         public function getList() {
             try {
                 $ColumnModel = new ColumnModel();
+
         
                 $limit = 10;
                 $urlParams = $this->getQueryStringParams();
@@ -23,6 +24,7 @@
                 $Columns = $ColumnModel->getAllColumn($offset, $limit);
         
                 $responseData = json_encode($Column);
+
         
                 $this->sendOutput($responseData);
             } catch (Error $e) {
@@ -35,6 +37,7 @@
         public function get() {
             try {
                 $ColumnModel = new ColumnModel();
+
         
                 $urlParams = $this->getQueryStringParams();
                 if (!isset($urlParams['id']) || !is_numeric($urlParams['id'])) {
@@ -42,6 +45,7 @@
                 }
         
                 $Column = $ColumnModel->getSingleColumn($urlParams['id']);
+
         
                 $responseData = json_encode($Columns);
         
@@ -55,7 +59,9 @@
     
         public function store() {
             try {
+
                 $ColumnModel = new ColumnModel();
+
         
                 $body = $this->getBody();
                 if (!$body) {
@@ -83,6 +89,7 @@
                 $Column = $ColumnModel->insertColumn($valuesToInsert);
         
                 $responseData = json_encode($Column);
+
         
                 $this->sendOutput($responseData);
             } catch (Error $e) {
@@ -135,6 +142,7 @@
                 }
         
                 $Column = $ColumnModel->deleteColumn($urlParams['id']);
+
         
                 $responseData = json_encode("La colonne a été correctement supprimé");
         
