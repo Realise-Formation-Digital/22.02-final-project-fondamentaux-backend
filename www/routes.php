@@ -8,24 +8,18 @@ require_once __DIR__ . "/controllers/TasksController.php";
 
 // ---- TODO : changer le path /api/users/... ----
 $routes = [
-  "/api/Columns/list" => ['GET', 'ColumnsController', 'getList'],
-  "/api/Columns/get" => ['GET', 'ColumnsController', 'get'],
-  "/api/Columns/add" => ['POST', 'ColumnsController', 'store'],
-  "/api/Columns/update" => ['PUT', 'ColumnsController', 'update'],
-  "/api/Columns/remove" => ['DELETE', 'ColumnsController', 'destroy'],
+  "/api/columns/list" => ['GET', 'ColumnsController', 'getList'],
+  "/api/columns/get" => ['GET', 'ColumnsController', 'get'],
+  "/api/columns/add" => ['POST', 'ColumnsController', 'store'],
+  "/api/columns/update" => ['PUT', 'ColumnsController', 'update'],
+  "/api/columns/remove" => ['DELETE', 'ColumnsController', 'destroy'],
 
-];
-
-$routes = [
   "/api/users/list" => ['GET', 'UsersController', 'getList'],
   "/api/users/get" => ['GET', 'UsersController', 'get'],
   "/api/users/add" => ['POST', 'UsersController', 'store'],
   "/api/users/update" => ['PUT', 'UsersController', 'update'],
   "/api/users/remove" => ['DELETE', 'UsersController', 'destroy'],
 
-];
-
-$routes = [
   "/api/tasks/list" => ['GET', 'tasksController', 'getList'],
   "/api/tasks/get" => ['GET', 'tasksController', 'get'],
   "/api/tasks/add" => ['POST', 'tasksController', 'store'],
