@@ -15,7 +15,7 @@ class TasksModel extends Database
     {
         // 
         return $this->getMany(
-            "SELECT * FROM tasks ORDER BY nom ASC LIMIT $offset, $limit",
+            "SELECT * FROM tasks ORDER BY name ASC LIMIT $offset, $limit",
             "TasksModel"
         );
 

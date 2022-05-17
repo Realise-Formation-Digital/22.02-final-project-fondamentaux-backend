@@ -12,7 +12,7 @@ class ColumnsModel extends Database
     {
         //
         return $this->getMany(
-            "SELECT * FROM columns ORDER BY nom ASC LIMIT $offset, $limit",
+            "SELECT * FROM columns ORDER BY name ASC LIMIT $offset, $limit",
             "ColumnsModel"
         );
 

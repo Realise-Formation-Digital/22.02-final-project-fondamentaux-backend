@@ -5,7 +5,7 @@ require_once __DIR__ . "/Database.php";
 class UsersModel extends Database
 {
     public $id;
-    public $usersname;
+    public $username;
     public $firstname;
     public $lastname;
     public $email;
@@ -14,7 +14,7 @@ class UsersModel extends Database
     {
         //
         return $this->getMany(
-            "SELECT * FROM users ORDER BY nom ASC LIMIT $offset, $limit",
+            "SELECT * FROM users ORDER BY username ASC LIMIT $offset, $limit",
             "UsersModel"
         );
     }
