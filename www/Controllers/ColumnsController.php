@@ -1,6 +1,6 @@
 <?php
 
-    require_once __DIR__ . "/../models/ColumnModel.php";
+    require_once __DIR__ . "/../models/ColumnsModel.php";
 
     class ColumnController extends BaseController {
 

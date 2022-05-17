@@ -2,34 +2,36 @@
 
 // ---- TODO : Commenter ce bout de code, qu'est-ce qu'il recherche ? ----
 require_once __DIR__ . "/controllers/BaseController.php";
-require_once __DIR__ . "/controllers/ColumnsController.php";
-require_once __DIR__ . "/controllers/UsersController.php";
-require_once __DIR__ . "/controllers/TasksController.php";
 
-// ---- TODO : changer le path /api/users/... ----
+require_once __DIR__ . "/controllers/UserController.php";
+
+require_once __DIR__ . "/controllers/TaskController.php";
+
+require_once __DIR__ . "/controllers/ColumnController.php";
+
+
+
+
+// ---- TODO : Commenter ce bout de code ----
 $routes = [
-  "/api/Columns/list" => ['GET', 'ColumnsController', 'getList'],
-  "/api/Columns/get" => ['GET', 'ColumnsController', 'get'],
-  "/api/Columns/add" => ['POST', 'ColumnsController', 'store'],
-  "/api/Columns/update" => ['PUT', 'ColumnsController', 'update'],
-  "/api/Columns/remove" => ['DELETE', 'ColumnsController', 'destroy'],
+  "/api/users/list" => ['GET', 'UserController', 'getList'],
+  "/api/users/get" => ['GET', 'UserController', 'get'],
+  "/api/users/add" => ['POST', 'UserController', 'store'],
+  "/api/users/update" => ['PUT', 'UserController', 'update'],
+  "/api/users/remove" => ['DELETE', 'UserController', 'destroy'],
 
+  "/api/tasks/list" => ['GET', 'TaskController', 'getList'],
+  "/api/tasks/get" => ['GET', 'TaskController', 'get'],
+  "/api/tasks/add" => ['POST', 'TaskController', 'store'],
+  "/api/tasks/update" => ['PUT', 'TaskController', 'update'],
+  "/api/tasks/remove" => ['DELETE', 'TaskController', 'destroy'],
+
+  "/api/columns/list" => ['GET', 'columnController', 'getList'],
+  "/api/columns/get" => ['GET', 'columnController', 'get'],
+  "/api/columns/add" => ['POST', 'columnController', 'store'],
+  "/api/columns/update" => ['PUT', 'columnController', 'update'],
+  "/api/columns/remove" => ['DELETE', 'columnController', 'destroy'],
 ];
 
-$routes = [
-  "/api/Users/list" => ['GET', 'UsersController', 'getList'],
-  "/api/Users/get" => ['GET', 'UsersController', 'get'],
-  "/api/Users/add" => ['POST', 'UsersController', 'store'],
-  "/api/Users/update" => ['PUT', 'UsersController', 'update'],
-  "/api/Users/remove" => ['DELETE', 'UsersController', 'destroy'],
 
-];
 
-$routes = [
-  "/api/tasks/list" => ['GET', 'tasksController', 'getList'],
-  "/api/tasks/get" => ['GET', 'tasksController', 'get'],
-  "/api/tasks/add" => ['POST', 'tasksController', 'store'],
-  "/api/tasks/update" => ['PUT', 'tasksController', 'update'],
-  "/api/tasks/remove" => ['DELETE', 'tasksController', 'destroy'],
-
-];
