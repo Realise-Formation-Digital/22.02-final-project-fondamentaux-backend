@@ -1,8 +1,8 @@
 <?php
 /**/
-require_once __DIR__ . "/kanban.php";
+require_once __DIR__ . "/Database.php";
 /**/
-class columnModel extends kanban
+class columnsModel extends Database
 {
  public $id;
  public $name;
@@ -13,22 +13,22 @@ class columnModel extends kanban
 
  }
  /**/
- public function getSingleColumn()
+ public function getSingleColumns()
  {
 
  }
  /**/
- public function insertColumn()
+ public function insertColumns()
  {
 
  }
  /**/
- public function updateColumn()
+ public function updateColumns()
  {
  
  }
  /**/
- public function deleteColumn()
+ public function deleteColumns()
  {
 
  }

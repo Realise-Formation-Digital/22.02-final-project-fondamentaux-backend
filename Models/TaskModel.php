@@ -1,8 +1,8 @@
 <?php
 /**/
-require_once __DIR__ .  "/kanban.php";
+require_once __DIR__ .  "/Database.php";
 /**/
-class TaskModel extends kanban
+class TasksModel extends Database
 {
  public $id;
  public $name;
@@ -16,22 +16,22 @@ class TaskModel extends kanban
 
  }
  /**/
- public function getSingleTask()
+ public function getSingleTasks()
  {
   
  }
  /**/
- public function insertTask()
+ public function insertTasks()
  {
 
  }
  /**/
- public function updateTask()
+ public function updateTasks()
  {
 
  }
  /**/
- public function deleteTask()
+ public function deleteTasks()
  {
 
  }
