@@ -53,13 +53,13 @@ class UsersModel extends Database
         //
         return $this->update(
             "UPDATE users SET $values WHERE id = $id",
-            "UserModel",
+            "UsersModel",
             "SELECT id FROM users WHERE id=$id",
             "SELECT * FROM users WHERE id=$id"
         );
     }
 
- /**/
+    /**/
     public function deleteUsers($id)
     {
         //
