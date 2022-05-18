@@ -87,30 +87,18 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        if (!isset($body['id'])) {
+        if (!isset($body['name'])) {
             throw new Exception("Aucun id n'a été spécifié");
           }
-          if (!isset($body['name'])) {
+          if (!isset($body['color'])) {
             throw new Exception("Aucun nom n'a été spécifié");
-          }
-          if (!isset($body['description'])) {
-            throw new Exception("Aucune date n'a été spécifié");
-          }
-          if (!isset($body['date_from'])) {
-            throw new Exception("Aucune heure de debut n'a été spécifié");
-          }
-          if (!isset($body['date_to'])) {
-            throw new Exception("Aucun heure de fin n'a été spécifié");
-          }
-          if (!isset($body['status(draft, open, close)'])) {
-            throw new Exception("Aucun lieu n'a été spécifié");
           }
 
         // ---- TODO : Commenter ce bout de code ----
         $keys = array_keys($body);
         $valuesToInsert = [];
         foreach($keys as $key) {
-          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status(draft, open, close)'])) {
+          if (in_array($key, ['name', 'color'])) {
             $valuesToInsert[$key] = $body[$key];
           }
         }
@@ -154,7 +142,7 @@
         $keys = array_keys($body);
         $valuesToUpdate = [];
         foreach($keys as $key) {
-          if (in_array($key, ['id', 'name', 'description', 'date_from','date_to', 'status(draft, open, close)'])) {
+          if (in_array($key, ['id', 'name', 'color'])) {
             $valuesToUpdate[$key] = $body[$key];
           }
         }
