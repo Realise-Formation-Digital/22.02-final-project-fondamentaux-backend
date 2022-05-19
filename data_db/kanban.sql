@@ -2,10 +2,10 @@
 -- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Hôte : maria_db:3306
--- Généré le : lun. 16 mai 2022 à 13:09
--- Version du serveur :  10.7.3-MariaDB-1:10.7.3+maria~focal
--- Version de PHP : 7.4.11
+-- Host: maria_db:3306
+-- Generation Time: May 18, 2022 at 01:03 PM
+-- Server version: 10.7.3-MariaDB-1:10.7.3+maria~focal
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `kanban`
+-- Database: `kanban`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `colums`
+-- Table structure for table `columns`
 --
 
-CREATE TABLE `colums` (
+CREATE TABLE `columns` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `colums`
+-- Dumping data for table `columns`
 --
 
-INSERT INTO `colums` (`id`, `name`, `color`) VALUES
+INSERT INTO `columns` (`id`, `name`, `color`) VALUES
 (1, 'To Do', 'Red'),
 (2, 'In Progress', 'Orange'),
 (3, 'Done', 'Green');
@@ -46,7 +46,7 @@ INSERT INTO `colums` (`id`, `name`, `color`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tasks`
+-- Table structure for table `tasks`
 --
 
 CREATE TABLE `tasks` (
@@ -63,7 +63,7 @@ CREATE TABLE `tasks` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -75,17 +75,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `colums`
+-- Indexes for table `columns`
 --
-ALTER TABLE `colums`
+ALTER TABLE `columns`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `tasks`
+-- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
@@ -93,30 +93,30 @@ ALTER TABLE `tasks`
   ADD UNIQUE KEY `users_id` (`users_id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `tasks`
+-- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `tasks`
+-- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `colums` (`id`),
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `columns` (`id`),
   ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 COMMIT;
 

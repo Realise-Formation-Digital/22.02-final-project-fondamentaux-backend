@@ -25,20 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `colums`
+-- Table structure for table `columns`
 --
 
-CREATE TABLE `colums` (
+CREATE TABLE `columns` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `colums`
+-- Dumping data for table `columns`
 --
 
-INSERT INTO `colums` (`id`, `name`, `color`) VALUES
+INSERT INTO `columns` (`id`, `name`, `color`) VALUES
 (1, 'To Do', 'Red'),
 (2, 'In Progress', 'Orange'),
 (3, 'Done', 'Green');
@@ -79,9 +79,9 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `colums`
+-- Indexes for table `columns`
 --
-ALTER TABLE `colums`
+ALTER TABLE `columns`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -116,7 +116,7 @@ ALTER TABLE `tasks`
 -- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `colums` (`id`),
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `columns` (`id`),
   ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 COMMIT;
 
