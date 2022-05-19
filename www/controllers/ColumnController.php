@@ -1,7 +1,7 @@
 <?php
-  require_once __DIR__ . "/../models/TaskModel.php";
+  require_once __DIR__ . "/../models/ColumnModel.php";
 
-  class TaskController extends BaseController
+  class ColumnController extends BaseController
   {
 
     /**
@@ -10,7 +10,7 @@
     public function getList() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $limit = 10;
@@ -27,10 +27,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $tasks = $taskModel->getAllTasks($offset, $limit);
+        $columns = $columnModel->getAllColumns($offset, $limit);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($tasks);
+        $responseData = json_encode($columns);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -48,7 +48,7 @@
     public function get() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -57,10 +57,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->getSingleTask($urlParams['id']);
+        $column = $columnModel->getSingleColumn($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($task);
+        $responseData = json_encode($column);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -78,7 +78,7 @@
     public function store() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -90,33 +90,24 @@
           if (!isset($body['name'])) {
             throw new Exception("Aucun nom n'a été spécifié");
           }
-          if (!isset($body['description'])) {
-            throw new Exception("Aucune date n'a été spécifié");
-          }
-          if (!isset($body['date_from'])) {
-            throw new Exception("Aucune heure de debut n'a été spécifié");
-          }
-          if (!isset($body['date_to'])) {
-            throw new Exception("Aucun heure de fin n'a été spécifié");
-          }
-          if (!isset($body['status(draft, open, close)'])) {
-            throw new Exception("Aucun lieu n'a été spécifié");
+          if (!isset($body['color'])) {
+            throw new Exception("Aucune couleur n'a été spécifié");
           }
 
         // ---- TODO : Commenter ce bout de code ----
         $keys = array_keys($body);
         $valuesToInsert = [];
         foreach($keys as $key) {
-          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status(draft, open, close)'])) {
+          if (in_array($key, ['name', 'color'])) {
             $valuesToInsert[$key] = $body[$key];
           }
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->insertTask($valuesToInsert);
+        $column = $columnModel->insertColumn($valuesToInsert);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($task);
+        $responseData = json_encode($column);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -134,7 +125,7 @@
     public function update() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -157,10 +148,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->updateTask($valuesToUpdate, $body['id']);
+        $column = $columnModel->updateColumn($valuesToUpdate, $body['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($task);
+        $responseData = json_encode($column);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -178,7 +169,7 @@
     public function destroy() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -187,7 +178,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->deleteTask($urlParams['id']);
+        $column = $columnModel->deleteColumn($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode("L'utilisateur a été correctement supprimé");
