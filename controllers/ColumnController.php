@@ -82,16 +82,13 @@
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
-        if (!$body) {
-          throw new Exception("Aucune donnée n'a été transmise dans le formulaire");
-        }
+          if (!$body) {
+            throw new Exception("Aucune donnée n'a été transmise dans le formulaire");
+          }
 
         // ---- TODO : Commenter ce bout de code ----
-        if (!isset($body['name'])) {
+          if (!isset($body['name'])) {
             throw new Exception("Aucun id n'a été spécifié");
-          }
-          if (!isset($body['color'])) {
-            throw new Exception("Aucun nom n'a été spécifié");
           }
 
         // ---- TODO : Commenter ce bout de code ----
