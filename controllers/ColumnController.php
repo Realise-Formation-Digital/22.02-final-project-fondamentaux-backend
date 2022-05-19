@@ -5,11 +5,11 @@
   {
 
     /**
-     * ---- TODO : Commenter cette méthode ----
+     * Création de la fonction getList permettant d'afficher la totatlité d'une table.
      */
     public function getList() {
       try {
-        // ---- TODO : Commenter ce bout de code ----
+        // On initialise la variable columnModel en creant un nouvel objet ColumnModel.
         $columnModel = new ColumnModel();
 
         // ---- TODO : Commenter ce bout de code ----
