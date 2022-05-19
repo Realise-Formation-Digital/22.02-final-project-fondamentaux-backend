@@ -91,13 +91,13 @@
           throw new Exception("Aucun nom n'a été spécifié");
         }
         if (!isset($body['description'])) {
-          throw new Exception("Aucune date n'a été spécifié");
+          throw new Exception("Aucune description n'a été spécifié");
         }
         if (!isset($body['date_from'])) {
-          throw new Exception("Aucune heure de debut n'a été spécifié");
+          throw new Exception("Aucune date_from n'a été spécifié");
         }
         if (!isset($body['date_to'])) {
-          throw new Exception("Aucun heure de fin n'a été spécifié");
+          throw new Exception("Aucun date_to n'a été spécifié");
         }
         if (!isset($body['status(draft, open, close)'])) {
           throw new Exception("Aucun lieu n'a été spécifié");
