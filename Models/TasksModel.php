@@ -30,7 +30,7 @@ class TasksModel extends Database
         );
     
     }
-    /*fonction pour inserrer des tâches*/
+    /*fonction pour insérer des tâches*/
     public function insertTasks($array)
     {
         //

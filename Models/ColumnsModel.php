@@ -27,7 +27,7 @@ class ColumnsModel extends Database
         );
 
     }
-    /*fonction pour inserrer des colonnes*/
+    /*fonction pour insérer des colonnes*/
     public function insertColumns($array)
     {
         //

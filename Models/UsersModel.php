@@ -28,7 +28,7 @@ class UsersModel extends Database
         );
 
     }
-    /*fonction pour inserrer des users*/
+    /*fonction pour insérer des users*/
     public function insertUsers($array)
     {
         //
