@@ -88,7 +88,10 @@
 
         // ---- TODO : Commenter ce bout de code ----
           if (!isset($body['name'])) {
-            throw new Exception("Aucun id n'a été spécifié");
+            throw new Exception("Aucun nom n'a été spécifié");
+          }
+          if (!isset($body['color'])) {
+            throw new Exception("Aucune couleur n'a été spécifié");
           }
 
         // ---- TODO : Commenter ce bout de code ----
