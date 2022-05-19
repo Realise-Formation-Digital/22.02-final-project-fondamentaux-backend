@@ -1,13 +1,13 @@
 <?php
-/**/
+/*vérifie si le fichier database a été inclus et évite de l'inclure une deuxième fois*/
 require_once __DIR__ . "/Database.php";
-/**/
+/*création du modèle columns*/
 class ColumnsModel extends Database
 {
     public $id;
     public $name;
     public $color;
-    /**/
+    /*fonction pour recupérer toutes les colonnes*/
     public function getAllColumns($offset = 0, $limit = 10)
     {
         //
@@ -17,7 +17,7 @@ class ColumnsModel extends Database
         );
 
     }
-    /**/
+    /*fonction pour recupérer une colonne*/
     public function getSingleColumns($id)
     {
         //
@@ -27,7 +27,7 @@ class ColumnsModel extends Database
         );
 
     }
-    /**/
+    /*fonction pour inserrer des colonnes*/
     public function insertColumns($array)
     {
         //
@@ -41,7 +41,7 @@ class ColumnsModel extends Database
         );
 
     }
-    /**/
+    /*foncton pour la mise à jour des colonnes*/
     public function updateColumns($array, $id)
     {
         //
@@ -60,7 +60,7 @@ class ColumnsModel extends Database
         );
     
     }
-    /**/
+    /*fonction pour supprimer des colonnes*/
     public function deleteColumns($id)
     {
         //

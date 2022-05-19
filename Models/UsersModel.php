@@ -1,7 +1,7 @@
 <?php
-/**/
+/*vérifie si le fichier database a été inclus et évite de l'inclure une deuxième fois*/
 require_once __DIR__ . "/Database.php";
-/**/
+/*création du modèle user*/
 class UsersModel extends Database
 {
     public $id;
@@ -9,7 +9,7 @@ class UsersModel extends Database
     public $firstname;
     public $lastname;
     public $email;
-    /* */
+    /*fonction pour recupérer tous les users*/
     public function getAllUsers($offset = 0, $limit = 10)
     {
         //
@@ -18,7 +18,7 @@ class UsersModel extends Database
             "UsersModel"
         );
     }
-    /**/
+    /*fonction pour recupérer un user*/
     public function getSingleUsers($id)
     {
         // 
@@ -28,7 +28,7 @@ class UsersModel extends Database
         );
 
     }
-    /**/
+    /*fonction pour inserrer des users*/
     public function insertUsers($array)
     {
         //
@@ -41,7 +41,7 @@ class UsersModel extends Database
             "SELECT * FROM users"
         );
     }
-    /**/
+    /*foncton pour la mise à jour des users*/
     public function updateUsers($array, $id)
     {
         //
@@ -59,7 +59,7 @@ class UsersModel extends Database
         );
     }
 
-    /**/
+    /*fonction pour supprimer des users*/
     public function deleteUsers($id)
     {
         //

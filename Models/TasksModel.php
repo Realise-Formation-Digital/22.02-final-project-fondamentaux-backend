@@ -1,7 +1,7 @@
 <?php
-/**/
+/*vérifie si le fichier database a été inclus et évite de l'inclure une deuxième fois*/
 require_once __DIR__ .  "/Database.php";
-/**/
+/*création du modèle tasks*/
 class TasksModel extends Database
 {
     public $id;
@@ -10,7 +10,7 @@ class TasksModel extends Database
     public $date_from;
     public $date_to;
     public $status;
-    /**/
+    /*fonction pour recupérer toutes les tâches*/
     public function getAllTasks($offset = 0, $limit = 10)
     {
         // 
@@ -20,7 +20,7 @@ class TasksModel extends Database
         );
 
     }
-    /**/
+    /*fonction pour recupérer une tâche*/
     public function getSingleTasks($id)
     {
         //
@@ -30,7 +30,7 @@ class TasksModel extends Database
         );
     
     }
-    /**/
+    /*fonction pour inserrer des tâches*/
     public function insertTasks($array)
     {
         //
@@ -45,7 +45,7 @@ class TasksModel extends Database
         );
 
     }
-    /**/
+    /*foncton pour la mise à jour des tâches*/
     public function updateTasks($array, $id)
     {
         //
@@ -64,7 +64,7 @@ class TasksModel extends Database
         );
 
     }
-    /**/
+    /*fonction pour supprimer des tâches*/
     public function deleteTasks($id)
     {
         //
