@@ -1,11 +1,11 @@
 <?php
 
 // BD locale
-define("DB_HOST", "localhost");
-define("DB_USERNAME", "root");
+define("DB_HOST", "maria_db");
+define("DB_USERNAME", "kanban");
 define("DB_PASSWORD", "kanban");
 define("DB_DATABASE_NAME", "kanban");
-define("DB_PORT", "4306");
+define("DB_PORT", "3306");
 
 // BD Marco
 // define("DB_HOST", "portainer.realise.ch");

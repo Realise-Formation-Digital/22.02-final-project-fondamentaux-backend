@@ -1,7 +1,7 @@
 <?php
-  require_once __DIR__ . "/../models/TaskModel.php";
+  require_once __DIR__ . "/../models/TasksModel.php";
 
-  class TaskController extends BaseController
+  class TasksController extends BaseController
   {
 
     /**
@@ -10,7 +10,7 @@
     public function getList() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $taskModel = new TasksModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $limit = 10;
@@ -48,7 +48,7 @@
     public function get() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $taskModel = new TasksModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -57,7 +57,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->getSingleTask($urlParams['id']);
+        $task = $taskModel->getSingleTasks($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($task);
@@ -78,7 +78,7 @@
     public function store() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $taskModel = new TasksModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -113,7 +113,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->insertTask($valuesToInsert);
+        $task = $taskModel->insertTasks($valuesToInsert);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($task);
@@ -134,7 +134,7 @@
     public function update() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $taskModel = new TasksModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -157,7 +157,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->updateTask($valuesToUpdate, $body['id']);
+        $task = $taskModel->updateTasks($valuesToUpdate, $body['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($task);
@@ -178,7 +178,7 @@
     public function destroy() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $taskModel = new TaskModel();
+        $taskModel = new TasksModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -187,7 +187,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $task = $taskModel->deleteTask($urlParams['id']);
+        $task = $taskModel->deleteTasks($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode("L'utilisateur a été correctement supprimé");
