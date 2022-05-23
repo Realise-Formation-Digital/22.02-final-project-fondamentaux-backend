@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 4306,
+            "driver": "MariaDB",
+            "name": "localhost",
+            "database": "kanban",
+            "username": "kanban",
+            "password": "kanban"
+        }
+    ]
+}
