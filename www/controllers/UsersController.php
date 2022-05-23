@@ -1,7 +1,7 @@
 <?php
-  require_once __DIR__ . "/../models/UserModel.php";
+  require_once __DIR__ . "/../models/UsersModel.php";
 
-  class UserController extends BaseController
+  class UsersController extends BaseController
   {
 
     /**
@@ -10,7 +10,7 @@
     public function getList() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $usersModel = new UsersModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $limit = 10;
@@ -27,7 +27,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $users = $userModel->getAllUsers($offset, $limit);
+        $users = $usersModel->getAllUsers($offset, $limit);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($users);
@@ -48,7 +48,7 @@
     public function get() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $usersModel = new UsersModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -57,10 +57,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->getSingleUser($urlParams['id']);
+        $users = $usersModel->getSingleUsers($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($users);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -78,7 +78,7 @@
     public function store() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $usersModel = new UsersModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -108,10 +108,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->insertUser($valuesToInsert);
+        $users = $usersModel->insertUsers($valuesToInsert);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($users);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -129,7 +129,7 @@
     public function update() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $usersModel = new UsersModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -152,10 +152,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->updateUser($valuesToUpdate, $body['id']);
+        $users = $usersModel->updateUsers($valuesToUpdate, $body['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($users);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -173,7 +173,7 @@
     public function destroy() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $usersModel = new UsersModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -182,7 +182,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->deleteUser($urlParams['id']);
+        $users = $usersModel->deleteUsers($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode("L'utilisateur a été correctement supprimé");

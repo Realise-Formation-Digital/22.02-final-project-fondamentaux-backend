@@ -1,7 +1,7 @@
 <?php
-  require_once __DIR__ . "/../models/ColumnModel.php";
+  require_once __DIR__ . "/../models/ColumnsModel.php";
 
-  class ColumnController extends BaseController
+  class ColumnsController extends BaseController
   {
 
     /**
@@ -10,7 +10,7 @@
     public function getList() {
       try {
         // On initialise la variable columnModel en creant un nouvel objet ColumnModel.
-        $columnModel = new ColumnModel();
+        $columnsModel = new ColumnsModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $limit = 10;
@@ -27,7 +27,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $columns = $columnModel->getAllColumns($offset, $limit);
+        $columns = $columnsModel->getAllColumns($offset, $limit);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($columns);
@@ -48,7 +48,7 @@
     public function get() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $columnModel = new ColumnModel();
+        $columnsModel = new ColumnsModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -57,10 +57,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $column = $columnModel->getSingleColumn($urlParams['id']);
+        $columns = $columnsModel->getSingleColumns($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($column);
+        $responseData = json_encode($columns);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -78,7 +78,7 @@
     public function store() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $columnModel = new ColumnModel();
+        $columnsModel = new ColumnsModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -104,7 +104,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $column = $columnModel->insertColumn($valuesToInsert);
+        $column = $columnsModel->insertColumns($valuesToInsert);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($column);
@@ -125,7 +125,7 @@
     public function update() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $columnModel = new ColumnModel();
+        $columnsModel = new ColumnsModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -148,7 +148,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $column = $columnModel->updateColumn($valuesToUpdate, $body['id']);
+        $column = $columnsModel->updateColumns($valuesToUpdate, $body['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode($column);
@@ -169,7 +169,7 @@
     public function destroy() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $columnModel = new ColumnModel();
+        $columnModel = new ColumnsModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -178,7 +178,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $column = $columnModel->deleteColumn($urlParams['id']);
+        $column = $columnModel->deleteColumns($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode("L'utilisateur a été correctement supprimé");
