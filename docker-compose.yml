@@ -2,7 +2,6 @@ version: "3.3"
 
 services:
   maria_db:
-    container_name: kanban
     image: mariadb:latest # version de l'image mysql
     volumes:
       - ./data_db:/var/lib/mariadb # où seront stockée les données en local

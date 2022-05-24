@@ -9,6 +9,8 @@ class TaskModel extends Database
   public $date_from;
   public $date_to;
   public $status;
+  public $columns_id;
+  public $users_id;
 
   /**
    * ---- TODO : Commenter cette méthode ----

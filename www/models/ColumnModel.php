@@ -40,12 +40,19 @@ class ColumnModel extends Database
     $keys = implode(", ", array_keys($array));
     $values = implode("', '", array_values($array));
 
+
+
     // ---- TODO : Commenter ce bout de code ----
+    if ("SELECT COUNT(*) FROM columns" >= 3)  
+    { return "Interdiction d'ajouter du contenu dans cette table"; }
+    else {
     return $this->insert(
       "INSERT INTO columns ($keys) VALUES ('$values')",
       "ColumnModel",
       "SELECT * FROM columns"
     );
+  }
+
   }
 
   /**
