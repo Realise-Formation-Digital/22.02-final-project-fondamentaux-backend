@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/Database.php";
-
+"Il est interdit d'ajouter une donnée dans cette table.";
 class ColumnModel extends Database
 {
   public $id;
@@ -15,7 +15,7 @@ class ColumnModel extends Database
     // ---- TODO : Commenter ce bout de code ----
     return $this->getMany(
       "SELECT * FROM columns ORDER BY name ASC LIMIT $offset, $limit",
-      "ColumnModel"
+      "ColumnModel",
     );
   }
 
@@ -36,23 +36,26 @@ class ColumnModel extends Database
    */
   public function insertColumn($array)
   {
+    $this->connection = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_DATABASE_NAME, DB_USERNAME, DB_PASSWORD);
+    $resultat = $this->connection->query("SELECT COUNT(*) FROM columns");
+    $final = $resultat->fetchColumn();
+
     // ---- TODO : Commenter ce bout de code ----
+
     $keys = implode(", ", array_keys($array));
     $values = implode("', '", array_values($array));
 
-
-
     // ---- TODO : Commenter ce bout de code ----
-    if ("SELECT COUNT(*) FROM columns" >= 3)  
-    { return "Interdiction d'ajouter du contenu dans cette table"; }
-    else {
+    if($final >= 3){
+      return "L'ajout de données dans cette table est strictement intérdit et sera sanctioné par la loi selon l'article 3 du code de Lamine";
+    }
+    else{
     return $this->insert(
       "INSERT INTO columns ($keys) VALUES ('$values')",
       "ColumnModel",
-      "SELECT * FROM columns"
+      "SELECT * FROM columns",
     );
   }
-
   }
 
   /**
