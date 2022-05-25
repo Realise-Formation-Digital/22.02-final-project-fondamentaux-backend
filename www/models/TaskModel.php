@@ -1,40 +1,45 @@
 <?php
 require_once __DIR__ . "/Database.php";
 
-class ColumnModel extends Database
+class TaskModel extends Database
 {
   public $id;
   public $name;
-  public $color;
-  
+  public $description;
+  public $date_from;
+  public $date_to;
+  public $status;
+  public $columns_id;
+  public $users_id;
+
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function getAllColumns($offset = 0, $limit = 10)
+  public function getAlltasks($offset = 0, $limit = 10)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->getMany(
-      "SELECT * FROM columns ORDER BY name ASC LIMIT $offset, $limit",
-      "ColumnModel"
+      "SELECT * FROM tasks ORDER BY name ASC LIMIT $offset, $limit",
+      "TaskModel"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function getSingleColumn($id)
+  public function getSingleTask($id)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->getSingle(
-      "SELECT * FROM columns WHERE id = $id",
-      "ColumnModel"
+      "SELECT * FROM tasks WHERE id = $id",
+      "TaskModel"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function insertColumn($array)
+  public function insertTask($array)
   {
     // ---- TODO : Commenter ce bout de code ----
     $keys = implode(", ", array_keys($array));
@@ -42,16 +47,16 @@ class ColumnModel extends Database
 
     // ---- TODO : Commenter ce bout de code ----
     return $this->insert(
-      "INSERT INTO columns ($keys) VALUES ('$values')",
-      "ColumnModel",
-      "SELECT * FROM columns"
+      "INSERT INTO tasks ($keys) VALUES ('$values')",
+      "TaskModel",
+      "SELECT * FROM tasks"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function updateColumn($array, $id)
+  public function updateTask($array, $id)
   {
     // ---- TODO : Commenter ce bout de code ----
     $values_array = [];
@@ -62,22 +67,22 @@ class ColumnModel extends Database
 
     // ---- TODO : Commenter ce bout de code ----
     return $this->update(
-      "UPDATE columns SET $values WHERE id = $id",
-      "ColumnModel",
-      "SELECT id FROM columns WHERE id=$id",
-      "SELECT * FROM columns WHERE id=$id"
+      "UPDATE tasks SET $values WHERE id = $id",
+      "TaskModel",
+      "SELECT id FROM tasks WHERE id=$id",
+      "SELECT * FROM tasks WHERE id=$id"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function deleteColumn($id)
+  public function deleteTask($id)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->delete(
-      "DELETE FROM columns WHERE id=$id",
-      "SELECT id FROM columns WHERE id=$id"
+      "DELETE FROM tasks WHERE id=$id",
+      "SELECT id FROM tasks WHERE id=$id"
     );
   }
 

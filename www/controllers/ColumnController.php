@@ -87,6 +87,9 @@
           }
 
         // ---- TODO : Commenter ce bout de code ----
+        if (!isset($body['id'])) {
+          throw new Exception("Aucun identifiant n'a été spécifié");
+        }
           if (!isset($body['name'])) {
             throw new Exception("Aucun nom n'a été spécifié");
           }
@@ -98,7 +101,7 @@
         $keys = array_keys($body);
         $valuesToInsert = [];
         foreach($keys as $key) {
-          if (in_array($key, ['name', 'color'])) {
+          if (in_array($key, ['id', 'name', 'color'])) {
             $valuesToInsert[$key] = $body[$key];
           }
         }

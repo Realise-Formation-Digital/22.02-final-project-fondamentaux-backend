@@ -99,15 +99,21 @@
           if (!isset($body['date_to'])) {
             throw new Exception("Aucun heure de fin n'a été spécifié");
           }
-          if (!isset($body['status(draft, open, close)'])) {
-            throw new Exception("Aucun lieu n'a été spécifié");
+          if (!isset($body['status'])) {
+            throw new Exception("Aucun status n'a été spécifié");
+          }
+          if (!isset($body['columns_id'])) {
+            throw new Exception("Aucune column n'a été spécifié");;
+          }
+          if (!isset($body['users_id'])) {
+            throw new Exception("Aucun user n'a été spécifié");
           }
 
         // ---- TODO : Commenter ce bout de code ----
         $keys = array_keys($body);
         $valuesToInsert = [];
         foreach($keys as $key) {
-          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status(draft, open, close)'])) {
+          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status', 'columns_id','users_id'])) {
             $valuesToInsert[$key] = $body[$key];
           }
         }
@@ -151,7 +157,7 @@
         $keys = array_keys($body);
         $valuesToUpdate = [];
         foreach($keys as $key) {
-          if (in_array($key, ['id', 'name', 'description', 'date_from','date_to', 'status(draft, open, close)'])) {
+          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status(draft, open, close)', 'columns_id','users_id'])) {
             $valuesToUpdate[$key] = $body[$key];
           }
         }

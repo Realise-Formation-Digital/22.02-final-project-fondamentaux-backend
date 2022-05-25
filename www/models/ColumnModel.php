@@ -1,60 +1,66 @@
 <?php
 require_once __DIR__ . "/Database.php";
-
-class TaskModel extends Database
+class ColumnModel extends Database
 {
   public $id;
   public $name;
-  public $description;
-  public $date_from;
-  public $date_to;
-  public $status;
-
+  public $color;
+  
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function getAlltasks($offset = 0, $limit = 10)
+  public function getAllColumns($offset = 0, $limit = 10)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->getMany(
-      "SELECT * FROM tasks ORDER BY name ASC LIMIT $offset, $limit",
-      "TaskModel"
+      "SELECT * FROM columns ORDER BY name ASC LIMIT $offset, $limit",
+      "ColumnModel",
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function getSingleTask($id)
+  public function getSingleColumn($id)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->getSingle(
-      "SELECT * FROM tasks WHERE id = $id",
-      "TaskModel"
+      "SELECT * FROM columns WHERE id = $id",
+      "ColumnModel"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function insertTask($array)
+  public function insertColumn($array)
   {
+    $this->connection = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_DATABASE_NAME, DB_USERNAME, DB_PASSWORD);
+    $resultat = $this->connection->query("SELECT COUNT(*) FROM columns");
+    $final = $resultat->fetchColumn();
+
     // ---- TODO : Commenter ce bout de code ----
+
     $keys = implode(", ", array_keys($array));
     $values = implode("', '", array_values($array));
 
     // ---- TODO : Commenter ce bout de code ----
+    if($final >= 3){
+      return "L'ajout de données dans cette table est strictement intérdit et sera sanctioné par la loi selon l'article 3 du code de Lamine";
+    }
+    else{
     return $this->insert(
-      "INSERT INTO tasks ($keys) VALUES ('$values')",
-      "TaskModel",
-      "SELECT * FROM tasks"
+      "INSERT INTO columns ($keys) VALUES ('$values')",
+      "ColumnModel",
+      "SELECT * FROM columns"
     );
+  }
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function updateTask($array, $id)
+  public function updateColumn($array, $id)
   {
     // ---- TODO : Commenter ce bout de code ----
     $values_array = [];
@@ -65,22 +71,22 @@ class TaskModel extends Database
 
     // ---- TODO : Commenter ce bout de code ----
     return $this->update(
-      "UPDATE tasks SET $values WHERE id = $id",
-      "TaskModel",
-      "SELECT id FROM tasks WHERE id=$id",
-      "SELECT * FROM tasks WHERE id=$id"
+      "UPDATE columns SET $values WHERE id = $id",
+      "ColumnModel",
+      "SELECT id FROM columns WHERE id=$id",
+      "SELECT * FROM columns WHERE id=$id"
     );
   }
 
   /**
    * ---- TODO : Commenter cette méthode ----
    */
-  public function deleteTask($id)
+  public function deleteColumn($id)
   {
     // ---- TODO : Commenter ce bout de code ----
     return $this->delete(
-      "DELETE FROM tasks WHERE id=$id",
-      "SELECT id FROM tasks WHERE id=$id"
+      "DELETE FROM columns WHERE id=$id",
+      "SELECT id FROM columns WHERE id=$id"
     );
   }
 
