@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/Database.php";
-"Il est interdit d'ajouter une donnée dans cette table.";
 class ColumnModel extends Database
 {
   public $id;
@@ -53,7 +52,7 @@ class ColumnModel extends Database
     return $this->insert(
       "INSERT INTO columns ($keys) VALUES ('$values')",
       "ColumnModel",
-      "SELECT * FROM columns",
+      "SELECT * FROM columns"
     );
   }
   }
