@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: maria_db:3306
--- Generation Time: May 23, 2022 at 12:01 PM
+-- Generation Time: May 25, 2022 at 09:21 AM
 -- Server version: 10.7.3-MariaDB-1:10.7.3+maria~focal
 -- PHP Version: 7.4.11
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `kanban`
 --
-CREATE DATABASE IF NOT EXISTS `kanban` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `kanban`;
 
 -- --------------------------------------------------------
 
@@ -81,7 +79,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `email`) VALUES
-(1, 'patrick', 'Patrick', 'Vavrina', 'patrick@club-linux.ch');
+(1, ' groupe_Vinko ', ' Bruno ', ' Da Silva ', ' dasilva @gmail.com '),
+(2, ' groupe_Vinko ', ' Sami ', ' Kherbache ', ' Sami_kherbache @hotmail.com '),
+(3, ' groupe_Vinko ', ' Vinko ', ' Roditi ', ' vinko.d.roditi @gmail.com '),
+(4, ' groupe_Vinko ', ' Loïc ', ' Gosselke ', ' GosselkeLoic @gmail.com '),
+(5, ' groupe_Bachir ', ' Bachir ', ' Aouad ', ' bachiraouad.aouad @gmail.com '),
+(6, ' groupe_Bachir ', ' Gabriel ', ' Sousa ', ' gab1000sousa @gmail.com '),
+(7, ' groupe_Bachir ', ' Xavier ', ' Dejean ', ' dejuan.xavier @gmail.com '),
+(8, ' groupe_Aniello ', ' Diago ', ' Cortez ', ' cortezdiago @gmail.com '),
+(9, ' groupe_Aniello ', ' Diogo ', ' Olivera ', ' diogu.7 @hotmail.com '),
+(10, ' groupe_Aniello ', ' Gabriel ', ' Ferrera ', ' j.gabriel.fds.1 @gmail.com '),
+(11, ' groupe_Aniello ', ' Aniello ', ' Frasca ', ' aniellofrasca @gmail.com '),
+(12, ' groupe_Lamine ', ' Eyes ', ' Naitliman ', ' eyes.naitliman @gmail.com '),
+(13, ' groupe_Lamine ', ' Yonathan ', ' Ezechiel - Favre ', ' esechiel.yonathan.favre @gmail.com '),
+(14, ' groupe_Lamine ', ' Lamine ', ' Sakho ', ' sakho.lamine2k19 @gmail.com '),
+(15, ' groupe_Olivier ', ' Boubakar ', ' Sow ', ' boubakars @gmail.com '),
+(16, ' groupe_Olivier ', ' Patrick ', ' Vavrina ', ' patrick @club - linux.ch '),
+(17, ' groupe_Olivier ', ' Cardona ', ' Olivier ', ' ocardo73 @gmail.com ');
 
 --
 -- Indexes for dumped tables
@@ -98,8 +112,8 @@ ALTER TABLE `columns`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `columns_id` (`columns_id`),
-  ADD UNIQUE KEY `users_id` (`users_id`);
+  ADD UNIQUE KEY `users_id` (`users_id`),
+  ADD KEY `columns_id` (`columns_id`) USING BTREE;
 
 --
 -- Indexes for table `users`
@@ -118,6 +132,12 @@ ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -125,8 +145,8 @@ ALTER TABLE `tasks`
 -- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `columns` (`id`),
-  ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`columns_id`) REFERENCES `columns` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

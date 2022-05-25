@@ -1,7 +1,5 @@
 <?php
 
-
-// ---- TODO : Commenter ce bout de code, qu'est-ce qu'il recherche ? ----
 require_once __DIR__ . "/controllers/BaseController.php";
 
 require_once __DIR__ . "/controllers/UsersController.php";
@@ -11,13 +9,12 @@ require_once __DIR__ . "/controllers/TasksController.php";
 require_once __DIR__ . "/controllers/ColumnsController.php";
 
 
-// ---- TODO : Commenter ce bout de code ----
 $routes = [
-  "/api/users/list" => ['GET', 'UsersController', 'getList'],
-  "/api/users/get" => ['GET', 'UsersController', 'get'],
-  "/api/users/add" => ['POST', 'UsersController', 'store'],
-  "/api/users/update" => ['PUT', 'UsersController', 'update'],
-  "/api/users/remove" => ['DELETE', 'UsersController', 'destroy'],
+  "/api/users/list" => ['GET', 'UserController', 'getList'],
+  "/api/users/get" => ['GET', 'UserController', 'get'],
+  "/api/users/add" => ['POST', 'UserController', 'store'],
+  "/api/users/update" => ['PUT', 'UserController', 'update'],
+  "/api/users/remove" => ['DELETE', 'UserController', 'destroy'],
 
   "/api/tasks/list" => ['GET', 'TasksController', 'getList'],
   "/api/tasks/get" => ['GET', 'TasksController', 'get'],
