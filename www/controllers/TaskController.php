@@ -1,7 +1,7 @@
 <?php
-  require_once __DIR__ . "/../models/UserModel.php";
+  require_once __DIR__ . "/../models/TaskModel.php";
 
-  class UserController extends BaseController
+  class TaskController extends BaseController
   {
 
     /**
@@ -10,7 +10,7 @@
     public function getList() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $taskModel = new TaskModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $limit = 10;
@@ -27,10 +27,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $users = $userModel->getAllUsers($offset, $limit);
+        $tasks = $taskModel->getAllTasks($offset, $limit);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($users);
+        $responseData = json_encode($tasks);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -48,7 +48,7 @@
     public function get() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $taskModel = new TaskModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -57,10 +57,10 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->getSingleUser($urlParams['id']);
+        $task = $taskModel->getSingleTask($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($task);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -78,40 +78,51 @@
     public function store() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $taskModel = new TaskModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
         if (!$body) {
           throw new Exception("Aucune donnée n'a été transmise dans le formulaire");
-      }
-      if (!isset($body['username'])) {
-          throw new Exception("Aucun pseudo n'a été spécifié");
-      }
-      if (!isset($body['firstname'])) {
-          throw new Exception("Aucun nom n'a été spécifié");
-      }
-      if (!isset($body['lastname'])) {
-          throw new Exception("Le prénom n'a pas été spécifié");
-      }
-      if (!isset($body['email'])) {
-          throw new Exception("L'e-mail n'a pas été spécifié");
-      }
+        }
+
+        // ---- TODO : Commenter ce bout de code ----
+          if (!isset($body['name'])) {
+            throw new Exception("Aucun nom n'a été spécifié");
+          }
+          if (!isset($body['description'])) {
+            throw new Exception("Aucune date n'a été spécifié");
+          }
+          if (!isset($body['date_from'])) {
+            throw new Exception("Aucune heure de debut n'a été spécifié");
+          }
+          if (!isset($body['date_to'])) {
+            throw new Exception("Aucun heure de fin n'a été spécifié");
+          }
+          if (!isset($body['status'])) {
+            throw new Exception("Aucun status n'a été spécifié");
+          }
+          if (!isset($body['columns_id'])) {
+            throw new Exception("Aucune column n'a été spécifié");;
+          }
+          if (!isset($body['users_id'])) {
+            throw new Exception("Aucun user n'a été spécifié");
+          }
 
         // ---- TODO : Commenter ce bout de code ----
         $keys = array_keys($body);
         $valuesToInsert = [];
         foreach($keys as $key) {
-          if (in_array($key, ['username', 'firstname', 'lastname', 'email'])) {
+          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status', 'columns_id','users_id'])) {
             $valuesToInsert[$key] = $body[$key];
           }
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->insertUser($valuesToInsert);
+        $task = $taskModel->insertTask($valuesToInsert);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($task);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -129,7 +140,7 @@
     public function update() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $taskModel = new TaskModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $body = $this->getBody();
@@ -146,16 +157,16 @@
         $keys = array_keys($body);
         $valuesToUpdate = [];
         foreach($keys as $key) {
-          if (in_array($key, ['username', 'firstname', 'lastname', 'email'])) {
+          if (in_array($key, ['id','name', 'description', 'date_from', 'date_to','status(draft, open, close)', 'columns_id','users_id'])) {
             $valuesToUpdate[$key] = $body[$key];
           }
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->updateUser($valuesToUpdate, $body['id']);
+        $task = $taskModel->updateTask($valuesToUpdate, $body['id']);
 
         // ---- TODO : Commenter ce bout de code ----
-        $responseData = json_encode($user);
+        $responseData = json_encode($task);
 
         // ---- TODO : Commenter ce bout de code ----
         $this->sendOutput($responseData);
@@ -173,7 +184,7 @@
     public function destroy() {
       try {
         // ---- TODO : Commenter ce bout de code ----
-        $userModel = new UserModel();
+        $taskModel = new TaskModel();
 
         // ---- TODO : Commenter ce bout de code ----
         $urlParams = $this->getQueryStringParams();
@@ -182,7 +193,7 @@
         }
 
         // ---- TODO : Commenter ce bout de code ----
-        $user = $userModel->deleteUser($urlParams['id']);
+        $task = $taskModel->deleteTask($urlParams['id']);
 
         // ---- TODO : Commenter ce bout de code ----
         $responseData = json_encode("L'utilisateur a été correctement supprimé");
